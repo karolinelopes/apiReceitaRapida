@@ -28,7 +28,7 @@ exports.create = async(data) => {
 
 exports.update = async(id, data) => {
     await User
-        .findByIdAndUpdate(id, {
+        .findOneAndUpdate(id, {
             $set: {
                 name: data.name,
                 email: data.email

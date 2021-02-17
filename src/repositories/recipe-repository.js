@@ -28,7 +28,7 @@ exports.create = async(data) => {
 
 exports.update = async(id, data) => {
     await Recipe
-        .findByIdAndUpdate(id, {
+        .findOneAndUpdate(id, {
             $set: {
                 name: data.name
             }

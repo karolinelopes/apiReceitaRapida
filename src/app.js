@@ -9,7 +9,12 @@ const app = express();
 const router = express.Router();
 
 //Conecta ao banco de dados (mongodb, string de conexão)
-mongoose.connect(config.connectionString);
+mongoose.connect(config.connectionString, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+});
 
 //Carrega ao models
 const Ingredient = require('./models/ingredient');
