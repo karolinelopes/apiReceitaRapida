@@ -1,5 +1,7 @@
-global.SALT_KEY = 'f5b99242-6504-4ca3-90f2-05e78e5761ef';
+//exemplo
+global.SALT_KEY = 'SUA_SENHA';
 
+//exemplo link de conexão com o banco de dados MongoDB
 module.exports = {
-    connectionString: 'mongodb+srv://TgReceitaRapida:TgReceitaRapida@cluster0.ctzos.mongodb.net/projects?retryWrites=true&w=majority'
+    connectionString: 'mongodb+srv://NOME_BANCODEDADOS:SENHA@cluster0.ctzos.mongodb.net/NOME_TABELA?retryWrites=true&w=majority'
 }
