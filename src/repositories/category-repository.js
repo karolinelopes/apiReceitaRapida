@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
-const Recipe = mongoose.model('Recipe');
+const Category = mongoose.model('Category');
 
 exports.get = async() => {
-    const res = await Recipe
-    .find({}, 'name items calorie yield totalTime category timeCooking preparationMode image');
+    const res = await Category
+    .find({}, 'name');
     return res;
 }
 
 exports.getByName = async(name) => {
-    const res = await Recipe
+    const res = await Category
     .findOne({
         name: name
     }, 'name');
@@ -16,18 +16,18 @@ exports.getByName = async(name) => {
 }
 
 exports.getById = async(id) => {
-    const res = await Recipe
+    const res = await Category
     .findById(id);
     return res;
 }
 
 exports.create = async(data) => {
-    var recipe = new Recipe(data);
-    await recipe.save();
+    var category = new Category(data);
+    await category.save();
 }
 
 exports.update = async(id, data) => {
-    await Recipe
+    await Category
         .findOneAndUpdate(id, {
             $set: {
                 name: data.name
@@ -36,6 +36,6 @@ exports.update = async(id, data) => {
 }
 
 exports.delete = async(id) => {
-    await Recipe
+    await Category
         .findOneAndRemove(id);
 }

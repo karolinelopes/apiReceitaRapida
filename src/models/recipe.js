@@ -21,6 +21,16 @@ const schema = new Schema({
         ref: 'Ingredient'
     }
 }],
+categorias: [{
+    name: {
+        type: String,
+        required: true
+},
+category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category'
+}
+}],
 
     yield: {
         type: String,
