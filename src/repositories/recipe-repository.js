@@ -3,7 +3,7 @@ const Recipe = mongoose.model('Recipe');
 
 exports.get = async() => {
     const res = await Recipe
-    .find({}, 'name items calorie measureUnit quantity yield time preparationMode totalCalories image');
+    .find({}, 'name items calorie yield totalTime categorys timeCooking preparationMode image');
     return res;
 }
 

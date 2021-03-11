@@ -1,8 +1,7 @@
-
-const mongoose = require('mongoose');
-const Ingredient = mongoose.model('Ingredient');
 const ValidationContract = require('../validators/fluent-validator');
 const repository = require('../repositories/ingredient-repository');
+const md5 = require('md5');
+const authService = require('../services/auth-service');
 
 exports.get = async(req, res, next) => {
     try {
@@ -48,6 +47,10 @@ exports.post = async(req, res, next) => {
     }
     
     try{
+
+        const token = req.body.token || req.query.token || req.headers['x-access-token'];
+        const data = await authService.decodeToken(token);
+
         await repository.create(req.body);
         res.status(201).send({ 
             message: 'Ingrediente cadastrado com sucesso!'

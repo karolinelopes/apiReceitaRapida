@@ -14,27 +14,23 @@ const schema = new Schema({
             required: true
     },
     calorie: {
-        type: Number,
-        required: true
+        type: Number
     },
     ingredient: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Ingredient'
     }
 }],
-    measureUnit: {
-        type: String,
-        required: true,
-    },
-    quantity: {
-        type: Number,
-        required: true
-    },
+
     yield: {
         type: String,
         required: true
     },
-    time: {
+    totalTime: {
+        type: Number,
+        required: true
+    },
+    timeCooking: {
         type: Number,
         required: true
     },
@@ -42,15 +38,17 @@ const schema = new Schema({
         type: String,
         required: true
     },
-    totalCalories: {
-        type: Number,
-        required: true
-    },
     image: {
         type: String,
         required: true,
         trim: true
-    }
+    },
+    roles: [{
+        type: String,
+        required: true,
+        enum: ['user', 'admin'],
+        default: 'user'
+    }]
 });
 
 module.exports = mongoose.model('Recipe', schema);

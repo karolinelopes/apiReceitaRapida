@@ -37,11 +37,11 @@ function onError(error) {
 
     switch (error.code) {
         case 'EACCES':
-            console.error(bind + ' requires elevated privaleges');
+            console.error(bind + ' É necessário privilégios elevados!');
             process.exit(1);
             break;
         case 'EADDRINUSE':
-            console.error(bind + ' is alreary in use');
+            console.error(bind + ' Já está sendo utilizada');
             process.exit(1);
             break;
         default:
