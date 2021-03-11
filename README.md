@@ -17,4 +17,5 @@ Para realizar o get, post, update e delete no Postman:
 - JavaScript
 - MongoDb
 - Express
+- JWT
 
