@@ -1,9 +1,11 @@
 const ValidationContract = require('../validators/fluent-validator');
+const crypto = require('crypto');
 const repository = require('../repositories/user-repository');
 const md5 = require('md5');
 const authService = require('../services/auth-service');
+const { JsonWebTokenError } = require('jsonwebtoken');
 
-exports.get = async(req, res, next) => {
+exports.get = async(req, res) => {
     try {
     var data = await repository.get();
     res.status(200).send(data);
@@ -14,7 +16,7 @@ exports.get = async(req, res, next) => {
     }
 }
 
-exports.getByName = async(req, res, next) => {
+exports.getByName = async(req, res) => {
     try {
     var data = await repository.getByName(req.params.name);
         res.status(200).send(data);
@@ -25,7 +27,7 @@ exports.getByName = async(req, res, next) => {
     }
 }
 
-exports.getById = async(req, res, next) => {
+exports.getById = async(req, res) => {
     try {
     var data = await repository.getById(req.params.id);
     res.status(200).send(data);
@@ -36,7 +38,7 @@ exports.getById = async(req, res, next) => {
     }
 }
 
-exports.post = async(req, res, next) => {
+exports.post = async(req, res) => {
     let contract = new ValidationContract();
     contract.hasMinLen(req.body.name, 4, 'O nome precisa ter no minímo 5 caracteres!');
     contract.hasMinLen(req.body.password, 6, 'A senha precisa ter no minímo 6 caracteres!');
@@ -66,7 +68,7 @@ exports.post = async(req, res, next) => {
     
 };
 
-exports.put = async(req, res, next) => {
+exports.put = async(req, res) => {
     try {
     await repository.update(req.params.id, req.body);
             res.status(200).send({
@@ -79,7 +81,7 @@ exports.put = async(req, res, next) => {
     }
 };
 
-exports.delete = async(req, res, next) => {
+exports.delete = async(req, res) => {
     try {
         await repository.delete(req.body.id);
             res.status(200).send({
@@ -93,7 +95,7 @@ exports.delete = async(req, res, next) => {
         
 };
 
-exports.authenticate = async(req, res, next) => {
+exports.authenticate = async(req, res) => {
 
     try{
         const user = await repository.authenticate({
@@ -114,7 +116,7 @@ exports.authenticate = async(req, res, next) => {
             roles: user.roles
         });
 
-        res.status(201).send({ 
+        res.status(200).send({ 
             token: token,
             data: {
                 name: user.name, 
@@ -128,5 +130,4 @@ exports.authenticate = async(req, res, next) => {
     }
     
 };
-
 
