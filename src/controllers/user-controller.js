@@ -1,5 +1,4 @@
 const ValidationContract = require('../validators/fluent-validator');
-const crypto = require('crypto');
 const repository = require('../repositories/user-repository');
 const md5 = require('md5');
 const authService = require('../services/auth-service');
