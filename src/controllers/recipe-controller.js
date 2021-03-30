@@ -1,7 +1,7 @@
 const repository = require('../repositories/recipe-repository');
 const ValidationContract = require('../validators/fluent-validator');
 const md5 = require('md5');
-const authService = require('../services/auth-service');
+//const authService = require('../services/auth-service');
 
 exports.get = async(req, res, next) => {
     try {
@@ -48,12 +48,12 @@ exports.post = async(req, res, next) => {
     
     try{
 
-        const token = req.body.token || req.query.token || req.headers['x-access-token'];
-        const data = await authService.decodeToken(token);
+        // const token = req.body.token || req.query.token || req.headers['x-access-token'];
+        // const data = await authService.decodeToken(token);
 
         await repository.create(req.body);
         res.status(201).send({ 
-            message: 'Receita cadastrado com sucesso!'
+            message: 'Receita cadastrada com sucesso!'
         });
     } catch (e) {
         res.status(500).send({
@@ -67,7 +67,7 @@ exports.put = async(req, res, next) => {
     try {
     await repository.update(req.params.id, req.body);
             res.status(200).send({
-                message: 'Receita editado!'
+                message: 'Receita editada!'
             });
         } catch (e) {
             res.status(500).send({
@@ -80,7 +80,7 @@ exports.delete = async(req, res, next) => {
     try {
         await repository.delete(req.body.id);
             res.status(200).send({
-                message: 'Receita removido!'
+                message: 'Receita removida!'
             });
         } catch (e) {
             res.status(500).send({
