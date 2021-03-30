@@ -48,8 +48,8 @@ exports.post = async(req, res, next) => {
     
     try{
 
-        // const token = req.body.token || req.query.token || req.headers['x-access-token'];
-        // const data = await authService.decodeToken(token);
+        const token = req.body.token || req.query.token || req.headers['x-access-token'];
+        const data = await authService.decodeToken(token);
 
         await repository.create(req.body);
         res.status(201).send({ 
