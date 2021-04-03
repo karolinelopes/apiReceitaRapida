@@ -1,7 +1,7 @@
 const repository = require('../repositories/recipe-repository');
 const ValidationContract = require('../validators/fluent-validator');
 const md5 = require('md5');
-//const authService = require('../services/auth-service');
+const authService = require('../services/auth-service');
 
 exports.get = async(req, res, next) => {
     try {
@@ -47,10 +47,6 @@ exports.post = async(req, res, next) => {
     }
     
     try{
-
-        const token = req.body.token || req.query.token || req.headers['x-access-token'];
-        const data = await authService.decodeToken(token);
-
         await repository.create(req.body);
         res.status(201).send({ 
             message: 'Receita cadastrada com sucesso!'
@@ -78,6 +74,9 @@ exports.put = async(req, res, next) => {
 
 exports.delete = async(req, res, next) => {
     try {
+        const token = req.body.token || req.query.token || req.headers['x-access-token'];
+        const data = await authService.decodeToken(token);
+
         await repository.delete(req.body.id);
             res.status(200).send({
                 message: 'Receita removida!'

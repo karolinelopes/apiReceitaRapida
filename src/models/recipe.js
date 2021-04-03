@@ -52,13 +52,7 @@ category: {
         type: String,
         required: true,
         trim: true
-    },
-    roles: [{
-        type: String,
-        required: true,
-        enum: ['user', 'admin'],
-        default: 'user'
-    }]
+    }
 });
 
 module.exports = mongoose.model('Recipe', schema);

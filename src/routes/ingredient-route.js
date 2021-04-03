@@ -7,8 +7,8 @@ router.get('/', controller.get);
 router.get('/:name', controller.getByName);
 router.get('/admin/:id', controller.getById);
 router.post('/', controller.post);
-router.put('/:id', authService.isAdmin, controller.put);
-router.delete('/', authService.isAdmin, controller.delete);
+router.put('/:id', controller.put);
+router.delete('/', authService.authorize, controller.delete);
 
 
 
