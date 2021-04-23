@@ -25,6 +25,11 @@ exports.getByName = async(req, res) => {
         });
     }
 }
+// exports.getFavoritos = async(req, res) => {
+//     try {
+//         var data = await repository.getFavoritos();
+//     }
+// }
 
 exports.getById = async(req, res) => {
     try {

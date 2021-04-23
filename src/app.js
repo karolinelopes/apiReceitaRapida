@@ -17,17 +17,16 @@ mongoose.connect(config.connectionString, {
 });
 
 //Carrega ao models
-const Ingredient = require('./models/ingredient');
 const Recipe = require('./models/recipe');
 const User = require('./models/user');
 const Category = require('./models/category');
 
 //Carrega as rotas
 const indexRoute = require('./routes/index-route');
-const ingredientRoute = require('./routes/ingredient-route');
 const recipeRoute = require('./routes/recipe-route');
 const userRoute = require('./routes/user-route');
 const categoryRoute = require('./routes/category-route');
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -42,7 +41,6 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', indexRoute);
-app.use('/ingredients', ingredientRoute);
 app.use('/recipes', recipeRoute);
 app.use('/users', userRoute);
 app.use('/categories', categoryRoute);

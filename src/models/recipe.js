@@ -8,31 +8,15 @@ const schema = new Schema({
         type: String,
         required: true
     },
-    items: [{
-        name: {
-            type: String,
-            required: true
-    },
-    calorie: {
-        type: Number
-    },
     ingredient: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Ingredient'
-    }
-}],
-categorias: [{
-    name: {
-        type: String,
+        type: Array,
         required: true
-},
-category: {
-    type: mongoose.Schema.Types.ObjectId,
+    },
+    category: {
+    type: [Schema.Types.ObjectId],
     ref: 'Category'
-}
-}],
-
-    yield: {
+},
+    income: {
         type: String,
         required: true
     },
@@ -50,9 +34,16 @@ category: {
     },
     image: {
         type: String,
-        required: true,
         trim: true
+    },
+    favorites: {
+        type: Number,
+        default: 0
+    },
+    username: {
+        type: String
     }
+
 });
 
 module.exports = mongoose.model('Recipe', schema);

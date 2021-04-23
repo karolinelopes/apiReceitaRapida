@@ -4,17 +4,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    name: {
+    username: {
         type: String, 
-        required: true
+        required: true,
+        unique: true
     },
     email: {
         type: String, 
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String, 
         required: true
+    },
+    favorites: {
+        type: [Schema.Types.ObjectId],
+        ref: 'Recipe'
     }
 });
 

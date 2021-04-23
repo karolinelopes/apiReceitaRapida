@@ -11,7 +11,15 @@ exports.getByName = async(name) => {
     const res = await Recipe
     .findOne({
         name: name
-    }, 'name');
+    }, 'name ingredient income totalTime categories timeCooking preparationMode image');
+    return res;
+}
+
+exports.findRecipesByIngredient = async(ingredient) => {
+    const res = await Recipe
+    .findOne({
+        ingredient: ingredient
+    }, 'name ingredient income totalTime categories timeCooking preparationMode image');
     return res;
 }
 
