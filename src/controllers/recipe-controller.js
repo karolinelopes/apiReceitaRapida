@@ -1,7 +1,7 @@
 const repository = require('../repositories/recipe-repository');
 const ValidationContract = require('../validators/fluent-validator');
 const md5 = require('md5');
-const authService = require('../services/auth-service');
+// const authService = require('../services/auth-service');
 
 exports.get = async(req, res, next) => {
     try {
@@ -85,9 +85,6 @@ exports.put = async(req, res) => {
 
 exports.delete = async(req, res) => {
     try {
-        const token = req.body.token || req.query.token || req.headers['x-access-token'];
-        const data = await authService.decodeToken(token);
-
         await repository.delete(req.params.id, req.body);
             res.status(200).send(data);
         } catch (e) {
