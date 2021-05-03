@@ -15,7 +15,7 @@ const schema = new Schema({
     category: {
     type: [Schema.Types.ObjectId],
     ref: 'Category'
-},
+    },
     income: {
         type: String,
         required: true
@@ -41,7 +41,8 @@ const schema = new Schema({
         default: 0
     },
     username: {
-        type: String
+        type: [Schema.Types.ObjectId],
+        ref: 'User'
     }
 
 });
