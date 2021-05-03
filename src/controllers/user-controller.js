@@ -17,7 +17,7 @@ exports.get = async(req, res) => {
 
 exports.getByName = async(req, res) => {
     try {
-    var data = await repository.getByName(req.params.name);
+    var data = await repository.getByName(req.params.username);
         res.status(200).send(data);
     } catch (e) {
         res.status(500).send({
@@ -44,7 +44,7 @@ exports.getById = async(req, res) => {
 
 exports.post = async(req, res) => {
     let contract = new ValidationContract();
-    contract.hasMinLen(req.body.name, 4, 'O nome precisa ter no minímo 5 caracteres!');
+    contract.hasMinLen(req.body.username, 4, 'O nome precisa ter no minímo 4 caracteres!');
     contract.hasMinLen(req.body.password, 6, 'A senha precisa ter no minímo 6 caracteres!');
     contract.isEmail(req.body.email, 'O email precisa ser válido!');
 
@@ -55,10 +55,9 @@ exports.post = async(req, res) => {
     
     try{
         await repository.create({
-            name: req.body.name,
+            username: req.body.username,
             email: req.body.email,
-            password: md5(req.body.password + global.SALT_KEY),
-            roles:["user"]
+            password: md5(req.body.password + global.SALT_KEY)
         });
 
         res.status(201).send({ 
@@ -115,15 +114,14 @@ exports.authenticate = async(req, res) => {
 
         const token = await authService.generateToken({
             id: user._id,
-            name: user.name, 
-            email: user.email,
-            roles: user.roles
+            username: user.username, 
+            email: user.email
         });
 
         res.status(200).send({ 
             token: token,
             data: {
-                name: user.name, 
+                username: user.username, 
                 email: user.email
             }
         });

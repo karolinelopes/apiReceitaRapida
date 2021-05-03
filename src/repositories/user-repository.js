@@ -3,15 +3,15 @@ const User = mongoose.model('User');
 
 exports.get = async() => {
     const res = await User
-    .find({}, 'name email');
+    .find({}, 'username email');
     return res;
 }
 
-exports.getByName = async(name) => {
+exports.getByName = async(username) => {
     const res = await User
     .findOne({
-        name: name
-    }, 'name email');
+        username: username
+    }, 'username email');
     return res;
 }
 
@@ -30,7 +30,7 @@ exports.update = async(id, data) => {
     await User
         .findOneAndUpdate(id, {
             $set: {
-                name: data.name,
+                username: data.username,
                 email: data.email
             }
         });
