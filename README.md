@@ -1,6 +1,10 @@
 # Api Receita Rápida :woman_cook:	:apple:	
 
-Aplicação desenvolvida para auxiliar a criação de receitas, ingredientes e usuários. Foi feito um CRUD (Create, Read, Update e Delete).
+Aplicação desenvolvida no TG(Trabalho de Graduação) da Fatec Itu, para auxiliar a criação de receitas, categorias e usuários. Foi feito um CRUD (Create, Read, Update e Delete). O foco dessa aplicação é apresentar receitas saudáveis, realizar combinações de receitas a partir dos ingredientes escolhidos pelo usuário.
+
+## Exemplo pesquisa de receitas a partir de ingredientes no Postman
+![image](https://user-images.githubusercontent.com/69213378/117550357-4ea2e700-b016-11eb-8bd5-6a4c4f678b80.png)
+
 
 ## Instalação
 É necessário ter o Node.js instalados em seu ambiente. Em seguida basta, carregar todas as dependências através do npm: `npm i`
@@ -8,9 +12,9 @@ Aplicação desenvolvida para auxiliar a criação de receitas, ingredientes e u
 ## Scripts
 Para rodar a aplicação no terminal: nodemon `.\bin\server.js` 
 Para realizar o get, post, update e delete no Postman, local:
-- Receitas, http://localhost:3000/recipes
-- Ingredientes, http://localhost:3000/ingredients
-- Usuários, http://localhost:3000/users
+- Receitas, http://localhost:5000/recipes
+- Categorias, http://localhost:5000/categories
+- Usuários, http://localhost:5000/users
 
 ## API no Heroku
 `https://api-fastrecipe.herokuapp.com/`
