@@ -1,6 +1,6 @@
 # Api Receita Rápida :woman_cook:	:apple:	
 
-Aplicação desenvolvida no TG(Trabalho de Graduação) da Fatec Itu, para auxiliar a criação de receitas, categorias e usuários. Foi feito um CRUD (Create, Read, Update e Delete). O foco dessa aplicação é apresentar receitas saudáveis, realizar combinações de receitas a partir dos ingredientes escolhidos pelo usuário.
+Aplicação desenvolvida no TG(Trabalho de Graduação) da Fatec Itu, para auxiliar a criação de receitas, categorias e usuários. Foi feito um CRUD (Create, Read, Update e Delete). O foco dessa aplicação é apresentar receitas saudáveis, realizar combinações de receitas a partir dos ingredientes escolhidos pelo usuário. API no Heroku: https://api-fastrecipe.herokuapp.com/
 
 ## Exemplo pesquisa de receitas a partir de ingredientes no Postman
 ![image](https://user-images.githubusercontent.com/69213378/117550357-4ea2e700-b016-11eb-8bd5-6a4c4f678b80.png)
