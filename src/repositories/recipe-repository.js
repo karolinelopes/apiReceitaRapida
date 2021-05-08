@@ -10,7 +10,7 @@ exports.get = async() => {
 exports.getByName = async(name) => {
     const res = await Recipe
     .find({
-        name: /name/i
+        name: new RegExp(name, 'i')
     }, 'name ingredient income totalTime category timeCooking preparationMode image');
     return res;
 }
@@ -18,7 +18,7 @@ exports.getByName = async(name) => {
 exports.findRecipesByIngredient = async(ingredient) => {
     const res = await Recipe
     .find({
-        ingredient: /ingredient/i
+        ingredient: new RegExp(ingredient, 'i')
     }, 'name ingredient income totalTime categories timeCooking preparationMode image');
     return res;
 }

@@ -10,7 +10,7 @@ exports.get = async() => {
 exports.getByName = async(username) => {
     const res = await User
     .findOne({
-        username: username
+        username: new RegExp(username, 'i')
     }, 'username email');
     return res;
 }

@@ -10,7 +10,7 @@ exports.get = async() => {
 exports.getByName = async(name) => {
     const res = await Category
     .findOne({
-        name: name
+        name: new RegExp(name, 'i')
     }, 'name');
     return res;
 }
