@@ -16,6 +16,10 @@ const schema = new Schema({
     type: [Schema.Types.ObjectId],
     ref: 'Category'
     },
+    calorie: {
+        type: Number,
+        required: true
+    },
     income: {
         type: String,
         required: true
