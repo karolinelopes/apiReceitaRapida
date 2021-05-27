@@ -26,6 +26,7 @@ const indexRoute = require('./routes/index-route');
 const recipeRoute = require('./routes/recipe-route');
 const userRoute = require('./routes/user-route');
 const categoryRoute = require('./routes/category-route');
+const uploadRoute = require('./routes/upload-route');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -44,5 +45,6 @@ app.use('/', indexRoute);
 app.use('/recipes', recipeRoute);
 app.use('/users', userRoute);
 app.use('/categories', categoryRoute);
+app.use('/upload',uploadRoute);
 
 module.exports = app;
