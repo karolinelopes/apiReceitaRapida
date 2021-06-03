@@ -3,7 +3,7 @@ const Recipe = mongoose.model('Recipe');
 
 exports.get = async() => {
     const res = await Recipe
-    .find({}, 'name ingredient income totalTime category timeCooking preparationMode image');
+    .find({}, 'name ingredient income totalTime category timeCooking preparationMode calorie image');
     return res;
 }
 
@@ -11,7 +11,7 @@ exports.getByName = async(name) => {
     const res = await Recipe
     .find({
         name: new RegExp(name, 'i')
-    }, 'name ingredient income totalTime category timeCooking preparationMode image');
+    }, 'name ingredient income totalTime category timeCooking preparationMode calorie image');
     return res;
 }
 
@@ -19,13 +19,7 @@ exports.findRecipesByIngredient = async(ingredient) => {
     const res = await Recipe
     .find({
         ingredient: new RegExp(ingredient, 'i'),
-        $and: [
-        {'ingredient': {$eq: 'ingredient'}},
-        {'ingredient': {$eq: 'ingredient'}},
-        {'ingredient': {$eq: 'ingredient'}},
-        {'ingredient': {$eq: 'ingredient'}},
-        ],
-    }, {});
+    }, 'name image');
     return res;
 }
 
