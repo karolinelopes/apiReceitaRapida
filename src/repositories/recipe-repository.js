@@ -18,8 +18,14 @@ exports.getByName = async(name) => {
 exports.findRecipesByIngredient = async(ingredient) => {
     const res = await Recipe
     .find({
-        ingredient: new RegExp(ingredient, 'i')
-    }, 'name ingredient income totalTime categories timeCooking preparationMode image');
+        ingredient: new RegExp(ingredient, 'i'),
+        $and: [
+        {'ingredient': {$eq: 'ingredient'}},
+        {'ingredient': {$eq: 'ingredient'}},
+        {'ingredient': {$eq: 'ingredient'}},
+        {'ingredient': {$eq: 'ingredient'}},
+        ],
+    }, {});
     return res;
 }
 
@@ -28,6 +34,13 @@ exports.getById = async(id) => {
     .findById(id);
     return res;
 }
+
+exports.getByImage = async(id) => {
+    const res = await Recipe
+    .find(id,{}, '_id image');
+    return res;
+}
+
 
 exports.create = async(data) => {
     var recipe = new Recipe(data);

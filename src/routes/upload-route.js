@@ -7,7 +7,7 @@ const upload = multer({
     dest: './public/uploads'
 });
 
-router.post('/', upload.array('file'),
+router.post('/upload', upload.array('file'),
 async(req, res) => {
     console.log(`Arquivos recebidos: ${req.files.length}`)
     const statusUpload = req.files.length > 0 ? true : false

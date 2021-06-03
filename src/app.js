@@ -19,15 +19,12 @@ mongoose.connect(config.connectionString, {
 //Carrega ao models
 const Recipe = require('./models/recipe');
 const User = require('./models/user');
-const Category = require('./models/category');
 
 //Carrega as rotas
 const indexRoute = require('./routes/index-route');
 const recipeRoute = require('./routes/recipe-route');
+const uploadImage = require('./routes/upload-route');
 const userRoute = require('./routes/user-route');
-const categoryRoute = require('./routes/category-route');
-const uploadRoute = require('./routes/upload-route');
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -43,8 +40,8 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRoute);
 app.use('/recipes', recipeRoute);
+app.use('/upload', uploadImage);
 app.use('/users', userRoute);
-app.use('/categories', categoryRoute);
-app.use('/upload',uploadRoute);
+
 
 module.exports = app;
