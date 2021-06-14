@@ -37,10 +37,8 @@ const schema = new Schema({
         required: true
     },
     image: {
-        originalName: {type:String},
-        path: {type:String},
-        size: {type:Number},
-        mimetype: {type:String}
+        type: String,
+        required: true
     },
     favorites: {
         type: Number,
